@@ -1,0 +1,11 @@
+body {
+    font-family: Arial;
+}
+
+.card {
+    border-radius: 15px;
+}
+
+li {
+    border-radius: 10px !important;
+}
