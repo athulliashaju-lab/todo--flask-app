@@ -1,0 +1,50 @@
+body{
+    background:white;
+    color:black;
+    transition:all 0.5s ease;
+}
+
+.container{
+    max-width:700px;
+}
+
+.card{
+    border-radius:20px;
+    padding:15px;
+    background:white;
+    box-shadow:0 4px 10px rgba(0,0,0,0.2);
+}
+
+.list-group-item{
+    margin-top:8px;
+    border-radius:10px;
+}
+
+/* DARK MODE */
+
+.dark-mode{
+    background:black !important;
+    color:white !important;
+}
+
+.dark-mode .card{
+    background:#1e1e1e !important;
+    color:white !important;
+}
+
+.dark-mode .list-group-item{
+    background:#2a2a2a !important;
+    color:white !important;
+}
+
+.dark-mode input,
+.dark-mode select{
+    background:#333 !important;
+    color:white !important;
+    border:1px solid #777 !important;
+}
+
+.dark-mode h1,
+.dark-mode small{
+    color:white !important;
+}
