@@ -1,16 +1,27 @@
-# Flask To-Do App
+TaskFlow - Flask To-Do Application
+TaskFlow is a task management web application built using Flask and SQLite. Users can register, log in, and manage their daily tasks efficiently.
 
-A simple To-Do web application using Flask.
+Features
 
-## Features
-- Login/Register
-- Add Tasks
-- Edit Tasks
-- Delete Tasks
+User Registration
+User Login & Logout
+Add Tasks
+Edit Tasks
+Delete Tasks
+Mark Tasks as Completed
+Progress Tracking
+Search Tasks
+Dark Mode
 
-## Tech Stack
-- Python
-- Flask
-- SQLite
-- HTML
-- CSS
+Tech Stack
+
+Python
+Flask
+SQLite
+HTML
+CSS
+Bootstrap
+
+Author
+
+Athullia S
