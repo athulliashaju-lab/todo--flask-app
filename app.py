@@ -35,26 +35,35 @@ def init_db():
     conn.close()
 
 
-@app.route("/register", methods=["GET","POST"])
+@app.route('/register', methods=['GET','POST'])
 def register():
 
-    if request.method == "POST":
+    if request.method=="POST":
 
-        username = request.form["username"]
-        password = request.form["password"]
+        username=request.form['username']
+        password=request.form['password']
 
-        conn = sqlite3.connect("todo.db")
-        c = conn.cursor()
+        conn=sqlite3.connect("todo.db",timeout=10)
 
-        c.execute(
+        cursor=conn.cursor()
+
+        try:
+
+            cursor.execute(
             "INSERT INTO users(username,password) VALUES(?,?)",
             (username,password)
-        )
+            )
 
-        conn.commit()
+            conn.commit()
+
+        except:
+
+            conn.close()
+            return render_template("register.html",error="Username already exists")
+
         conn.close()
 
-        return redirect("/login")
+        return redirect('/login')
 
     return render_template("register.html")
 
@@ -85,7 +94,7 @@ def login():
 
         return "Invalid Login"
 
-    return render_template("login.html")
+    return render_template("login.html",error="invalid username or password")
 
 
 @app.route("/logout")
@@ -94,6 +103,11 @@ def logout():
     session.clear()
 
     return redirect("/login")
+
+
+@app.route('/forgot')
+def forgot():
+    return render_template("forgot.html")
 
 
 @app.route("/")
@@ -126,7 +140,7 @@ def home():
 
     if total > 0:
         progress = int(
-            (completed/total)*100
+            (completed / total) * 100
         )
 
     return render_template(

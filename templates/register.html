@@ -2,7 +2,6 @@
 <html>
 
 <head>
-
 <title>Register</title>
 
 <style>
@@ -15,9 +14,7 @@ font-family:Arial,sans-serif;
 }
 
 body{
-
 min-height:100vh;
-
 display:flex;
 justify-content:center;
 align-items:center;
@@ -27,7 +24,6 @@ background:linear-gradient(
 #667eea,
 #764ba2
 );
-
 }
 
 .register-card{
@@ -42,30 +38,24 @@ padding:40px;
 
 border-radius:25px;
 
-box-shadow:
-0 8px 32px rgba(0,0,0,.3);
+box-shadow:0 8px 32px rgba(0,0,0,.3);
 
 text-align:center;
-
 color:white;
 
 }
 
 h1{
 margin-bottom:10px;
-font-size:32px;
 }
 
 p{
-margin-bottom:30px;
-opacity:.8;
+margin-bottom:25px;
 }
 
 .input-box{
-
 margin-bottom:20px;
 position:relative;
-
 }
 
 input{
@@ -79,8 +69,6 @@ border-radius:12px;
 
 outline:none;
 
-font-size:15px;
-
 }
 
 .password-box span{
@@ -91,7 +79,6 @@ right:15px;
 top:15px;
 
 cursor:pointer;
-
 color:black;
 
 }
@@ -105,7 +92,7 @@ border:none;
 
 border-radius:12px;
 
-background:#22c55e;
+background:green;
 
 color:white;
 
@@ -113,30 +100,18 @@ font-size:16px;
 
 cursor:pointer;
 
-transition:.3s;
-
 }
 
-button:hover{
-
-transform:translateY(-2px);
-
-background:#16a34a;
-
+small{
+display:block;
+margin-top:8px;
 }
 
 a{
-
 display:block;
-
 margin-top:20px;
-
 color:white;
-
 text-decoration:none;
-
-opacity:.8;
-
 }
 
 </style>
@@ -150,6 +125,16 @@ opacity:.8;
 <h1>Create Account ✨</h1>
 
 <p>Register to start managing tasks</p>
+
+{% if error %}
+
+<p style="color:red;">
+
+{{ error }}
+
+</p>
+
+{% endif %}
 
 <form method="POST">
 
@@ -169,12 +154,17 @@ required>
 type="password"
 id="password"
 name="password"
-placeholder="Password"
+placeholder="Minimum 8 characters"
+minlength="8"
 required>
 
 <span onclick="togglePassword()">
 👁
 </span>
+
+<small>
+Password must contain at least 8 characters
+</small>
 
 </div>
 
@@ -198,7 +188,10 @@ Already have an account?
 
 function togglePassword(){
 
-let x=document.getElementById("password");
+let x=
+document.getElementById(
+"password"
+);
 
 if(x.type==="password"){
 x.type="text";
