@@ -26,16 +26,16 @@ Tech Stack
 ## 📸 Screenshots
 
 ### Login Page
-![Login](screenshots/loginpage.jpg)
+![Login](screenshots/login-page.png)
 
 ### Register Page
-![Register](screenshots/registerpage.jpg)
+![Register](screenshots/register-page.png)
 
 ### Dashboard
-![Dashboard](screenshots/dashboard.jpg)
+![Dashboard](screenshots/dashboard.png)
 
 ### Edit Task Page
-![Edit](screenshots/editpage.jpg)
+![Edit](screenshots/edit-page.png)
 
 Author
 
