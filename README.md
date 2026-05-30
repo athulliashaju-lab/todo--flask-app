@@ -23,6 +23,20 @@ Tech Stack
 - CSS
 - Bootstrap
 
+## 📸 Screenshots
+
+### Login Page
+![Login](screenshots/loginpage.jpg)
+
+### Register Page
+![Register](screenshots/registerpage.jpg)
+
+### Dashboard
+![Dashboard](screenshots/dashboard.jpg)
+
+### Edit Task Page
+![Edit](screenshots/editpage.jpg)
+
 Author
 
 Athullia S
