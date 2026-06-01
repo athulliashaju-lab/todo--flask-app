@@ -105,9 +105,9 @@ def logout():
     return redirect("/login")
 
 
-@app.route('/forgot')
-def forgot():
-    return render_template("forgot.html")
+@app.route('/forgot-username')
+def forgot_username():
+    return render_template("forgot_username.html")
 
 
 @app.route("/")
