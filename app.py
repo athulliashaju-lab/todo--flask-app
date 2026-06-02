@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, make_respo
 import sqlite3
 import csv
 from io import StringIO
+from datetime import date
 
 app = Flask(__name__)
 app.secret_key = "secretkey123"
@@ -84,12 +85,13 @@ def login():
             (username,password)
         )
 
-        user = c.fetchone()
+        user = c.fetchall()
 
         conn.close()
 
         if user:
             session["user_id"] = user[0]
+            session["username"] = username
             return redirect("/")
 
         return "Invalid Login"
@@ -109,6 +111,10 @@ def logout():
 def forgot_username():
     return render_template("forgot_username.html")
 
+@app.route('/forgot')
+def forgot():
+    return render_template('forgot.html')
+
 
 @app.route("/")
 def home():
@@ -127,6 +133,7 @@ def home():
     )
 
     tasks = c.fetchall()
+    today = date.today().strftime("%Y-%m-%d")
 
     conn.close()
 
@@ -148,7 +155,8 @@ def home():
         tasks=tasks,
         total=total,
         completed=completed,
-        progress=progress
+        progress=progress,
+        today=today
     )
 
 

@@ -153,11 +153,7 @@ background:black !important;
 <h1>TaskFlow 🚀</h1>
 <p> Welcome back, {{ session['username'] }} 👋</p>
 
-<p style="opacity:.8">
-
-Organize your day smarter
-
-</p>
+<p style="opacity:0.8,">Your Personal productivity dashboard</p>
 
 </div>
 
@@ -189,7 +185,7 @@ Logout 🚪
 
 <div class="card text-center p-3">
 
-<h5>Total Tasks</h5>
+<h5> 📋 Total Tasks </h5>
 
 <h2>{{total}}</h2>
 
@@ -201,7 +197,7 @@ Logout 🚪
 
 <div class="card text-center p-3">
 
-<h5>Completed</h5>
+<h5> ✅ Completed </h5>
 
 <h2>{{completed}}</h2>
 
@@ -213,7 +209,7 @@ Logout 🚪
 
 <div class="card text-center p-3">
 
-<h5>Pending</h5>
+<h5> ⏳ Pending </h5>
 
 <h2>{{total-completed}}</h2>
 
@@ -324,60 +320,46 @@ Add Task
 {% for task in tasks %}
 
 <li class="list-group-item">
+<div class="card p-3 mb-3">
 
-<div class="d-flex justify-content-between">
+<div class="d-flex justify-content-between align-items-center">
 
 <div>
 
 {% if task[6]==1 %}
-<strike>{{task[2]}}</strike>
+<strike><h5>{{task[2]}}</h5></strike>
 {% else %}
-<strong>{{task[2]}}</strong>
+<h5>{{task[2]}}</h5>
 {% endif %}
+<small style="opacity:0.8;">
+    📁 {{task[3]}} |
+    ⭐
+    {% if task[4] == "High" %}
+                    <span style="color:red;font-weight:bold;">High</span>
+                {% elif task[4] == "Medium" %}
+                    <span style="color:orange;font-weight:bold;">Medium</span>
+{% else %}
+<span style="color:green;font-weight:bold;">Low</span>
+                {% endif %}
+                |
+                📅 {{task[5]}}
+            </small>
 
-<br>
+        </div>
 
-<small>
-
-📁 {{task[3]}}
-|
-⭐ {{task[4]}}
-|
-📅 {{task[5]}}
-
-</small>
-
-</div>
 
 <div>
-
-<a href="{{url_for('done',id=task[0])}}"
-class="btn btn-success btn-sm">
-
-✔
-
-</a>
-
-<a href="{{url_for('edit',id=task[0])}}"
-class="btn btn-warning btn-sm">
-
-✏️
-
-</a>
-
-<a href="{{url_for('delete',id=task[0])}}"
-class="btn btn-danger btn-sm">
-
-🗑
-
-</a>
-
-</div>
-
+    <a href="{{url_for('done',id=task[0])}}"
+    class="btn btn-success btn-sm">✔</a>
+    
+    <a href="{{url_for('edit',id=task[0])}}"
+    class="btn btn-warning btn-sm">✏️</a>
+    
+    <a href="{{url_for('delete',id=task[0])}}"
+    class="btn btn-danger btn-sm">🗑</a>
 </div>
 
 </li>
-
 {% endfor %}
 
 </ul>
