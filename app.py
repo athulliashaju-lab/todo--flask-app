@@ -85,7 +85,7 @@ def login():
             (username,password)
         )
 
-        user = c.fetchall()
+        user = c.fetchone()
 
         conn.close()
 
