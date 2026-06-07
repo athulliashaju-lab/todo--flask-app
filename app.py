@@ -192,10 +192,16 @@ def done(id):
     conn = sqlite3.connect("todo.db")
     c = conn.cursor()
 
-    c.execute(
-        "UPDATE tasks SET done=1 WHERE id=?",
-        (id,)
-    )
+    c.execute( "SELECT done FROM tasks WHERE id=?",(id,))
+
+    current_status = c.fetchone()[0]
+
+    if current_status == 1:
+        new_status = 0
+    else:
+        new_status = 1
+
+    c.execute("UPDATE tasks SET done=? WHERE id=?", (new_status, id))
 
     conn.commit()
     conn.close()
